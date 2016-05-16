@@ -13,10 +13,26 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say("Hi!  Welcome to the Oklahome Employment Security Commission (OESC) Automated Solution Chat (ASC)!  If you're having a problem, just ASC!")
-                .then(() => 'speak');
+            return bot.say('Hi!  Welcome to the Oklahome Employment Security Commission (OESC) Automated Solution Chat (ASC)!  If you\'re having a problem, just ASC!')
+                .then(() => 'askName');
         }
     },
+	
+	askName: { 
+		prompt: (bot) => bot.say('For the following questions, please provide the information as it appears on your claim.\nWhat is your first name?'), 
+		receive: (bot, message) => { 
+			const firstName = message.text; 
+			return bot.setProp('firstName', firstName)  
+		} 
+		prompt: (bot) => bot.say('What is your last name?'), 
+		receive: (bot, message) => { 
+			const lastName = message.text; 
+			return bot.setProp('lastName', lastName) 
+				.then(() => bot.say(`Great! I understand that your name is ${firstName} ${lastName}. I'll call you ${firstName}`))  
+				.then(() => 'speak'); 
+
+		} 
+	}, 
 
     speak: {
         receive: (bot, message) => {
