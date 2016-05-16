@@ -74,7 +74,7 @@ module.exports = new Script({
 
 	checkInfo: {
 		prompt: (bot) => bot.getProp('firstName')
-			.then(() => bot.say(`Is your first name FirstName %[Yes](postback:yes) %[No](postback:no)`)),
+			.then(() => bot.say(`Is your first name ${firstName} %[Yes](postback:yes) %[No](postback:no)`)),
 		receive: (bot, message) => { 
 			return bot.say("Great!  Let me check your claim.")
 			.then(() => 'speak');
