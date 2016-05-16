@@ -106,7 +106,11 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`I didn't understand that.`).then(() => 'speak');
+					if (upperText != "INITIALHELP") {
+						return bot.say(`I didn't understand that.`).then(() => 'speak');
+					} else {
+						return bot.say(`Restarting...`).then(() => 'initialHelp');
+					}
                 }
 
                 var response = scriptRules[upperText];
@@ -120,12 +124,9 @@ module.exports = new Script({
                         return bot.say(line);
                     });
                 })
-				if (upperText != "INITIALHELP") {
-					return p.then(() => 'speak');
-				} else {
-					return p.then(() => 'initialHelp');
-				}
-            }
+				
+				return p.then(() => 'initialHelp');
+	        }
 
             return updateSilent()
                 .then(getSilent)
