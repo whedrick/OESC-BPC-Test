@@ -47,7 +47,7 @@ module.exports = new Script({
 		receive: (bot, message) => { 
 			const firstName = message.text; 
 			return bot.setProp('firstName', firstName) 
-				.then(() => bot.say(`Great! I'll call you ${name}`))
+				.then(() => bot.say(`Great! I'll call you ${firstName}`))
 				.then(() => 'askLastName'); 
 		} 
 	}, 
