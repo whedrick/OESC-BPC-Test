@@ -22,12 +22,12 @@ module.exports = new Script({
 		prompt: (bot) => bot.say('I can help you with several things.  Please choose one of the following:	%[I would like to file a new claim](postback:file_new_claim) %[I received a letter about my claim](postback:received_letter) %[I would like to chat with a live person](postback:live_person) %[I would like a phone call from a representative](postback:phone_call)'), 
 		receive: (bot, message) => { 
 			const option = message.text; 
-			if (message.text == "file_new_claim") {
+			if (message.text == "I would like to file a new claim") {
 				return bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/')
 					.then(() => 'speak'); 
 			} else {
 				return bot.setProp('option', option)
-					.then(() => bot.say(`Great! You chose ${option}`))
+					.then(() => bot.say(`Great! You chose "${option}"`))
 					.then(() => 'speak'); 
 			}
 		}
