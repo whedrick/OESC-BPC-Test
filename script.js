@@ -14,9 +14,20 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say("Hi!  Welcome to the Oklahoma Employment Security Commission (OESC) Automated Solution Chat (ASC)!  If you're having a problem, just ASC!")
-                .then(() => 'speak');
+                .then(() => 'initialHelp');
         }
     },
+	
+	initialHelp: { 
+		prompt: (bot) => bot.say('I can help you with several things.  Please choose one of the following:	%[I would like to file a new claim](postback:file_new_claim) %[I received a letter about my claim](postback:received_letter) %[I would like to chat with a live person](live_person) %[I would like a phone call from a representative](phone_call)'), 
+		receive: (bot, message) => { 
+		const name = message.text; 
+		return bot.setProp('name', name) 
+			.then(() => bot.say(`Great! I'll call you ${name}`)) 
+			.then(() => 'speak'); 
+		} 
+	}, 
+
 
     speak: {
         receive: (bot, message) => {
