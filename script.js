@@ -26,7 +26,7 @@ module.exports = new Script({
 				return bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/')
 				.then(() => 'speak'); 
 			} else {
-				eturn bot.say('One moment...')
+				return bot.say('One moment...')
 				.then(() => 'speak'); 
 			}
 		}
