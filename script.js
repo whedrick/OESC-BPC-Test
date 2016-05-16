@@ -68,23 +68,18 @@ module.exports = new Script({
 			const social = message.text; 
 			return bot.setProp('social', social) 
 				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
-				.then(() => 'speak'); 
+				.then(() => 'checkInfo'); 
 		} 
 	}, 
-	
+
 	checkInfo: {
-		prompt: (bot) => bot.getProp('firstName') => bot.say(`Is your first name ${firstName} %[Yes](postback:yes) %[No](postback:no)`), 
+		prompt: (bot) => bot.say(`Is your first name FirstName %[Yes](postback:yes) %[No](postback:no)`),
 		receive: (bot, message) => { 
-			if (message.text == "Yes") {
-				return bot.say("Great!  Let me check your claim.")
-                .then(() => 'speak');	
-			} else {
-				return bot.say("OK, let's try again.")
-                .then(() => 'askFirstName');			
-			}
+			return bot.say("Great!  Let me check your claim.")
+			.then(() => 'speak');
 		}
 	},
-
+	
     speak: {
         receive: (bot, message) => {
 
