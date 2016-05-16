@@ -25,6 +25,9 @@ module.exports = new Script({
 			if (message.text == "file_new_claim") {
 				return bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/')
 				.then(() => 'speak'); 
+			} else {
+				eturn bot.say('One moment...')
+				.then(() => 'speak'); 
 			}
 		}
 	}, 
