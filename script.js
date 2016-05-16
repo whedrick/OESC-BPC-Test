@@ -24,10 +24,11 @@ module.exports = new Script({
 			const option = message.text; 
 			if (message.text == "file_new_claim") {
 				return bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/')
-				.then(() => 'speak'); 
+					.then(() => 'speak'); 
 			} else {
-				return bot.say('One moment... You responded 1 ${option} 2 ${message.text}')
-				.then(() => 'speak'); 
+				return bot.setProp('option', option)
+					.then(() => bot.say(`Great! You chose ${option}`))
+					.then(() => 'speak'); 
 			}
 		}
 	}, 
