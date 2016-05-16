@@ -21,19 +21,8 @@ module.exports = new Script({
 	initialHelp: {
 		prompt: (bot) => bot.say('I can help you with several things.  Please choose one of the following:	%[I would like to file a new claim](postback:file_new_claim) %[I received a letter about my claim](postback:received_letter) %[I would like to chat with a live person](live_person) %[I would like a phone call from a representative](phone_call)'
 		receive: (bot, message) => {
-			if (message.text == "file_new_claim") {
 				.then(() => bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/'))
 				.then(() => 'speak');  
-			} else if (message.text == "received_letter") {
-				.then(() => bot.say('OK, let me gather some information so I can determine what the letter was about.'))
-				.then(() => 'askFirstName');  
-			} else if (message.text == "live_person") {
-				.then(() => bot.say('All of our representatives are currently helping other claimants.  Please be patient and one will be with you as quickly as possible.'))
-				.then(() => 'speak');  
-			} else if (message.text == "phone_call") {
-				.then(() => bot.say('All of our representatives are currently helping other claimants.  The current wait time for call back is approximately 17.78 hours.  Please be patient and the next available representative will call you.'))
-				.then(() => 'speak');  
-			}
 		}
 	},
 	
