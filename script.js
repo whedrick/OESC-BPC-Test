@@ -14,16 +14,55 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hi!  Welcome to the Oklahome Employment Security Commission (OESC) Automated Solution Chat (ASC)!  If you\'re having a problem, just ASC!')
-                .then(() => 'askFirstName');
+                .then(() => 'initialHelp');
         }
     },
 	
+	initialHelp: {
+		prompt: (bot) => bot.say('I can help you with several things.  Please choose one of the following:	%[I would like to file a new claim](postback:file_new_claim) %[I received a letter about my claim](postback:received_letter) %[I would like to chat with a live person](live_person) %[I would like a phone call from a representative](phone_call)'
+		receive: (bot, message) => {
+			if (message.text == "file_new_claim") {
+				.then(() => bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/'))
+				.then(() => 'speak');  
+			} else if (message.text == "received_letter") {
+				.then(() => bot.say('OK, let me gather some information so I can determine what the letter was about.'))
+				.then(() => 'askFirstName');  
+			} else if (message.text == "live_person") {
+				.then(() => bot.say('All of our representatives are currently helping other claimants.  Please be patient and one will be with you as quickly as possible.'))
+				.then(() => 'speak');  
+			} else if (message.text == "phone_call") {
+				.then(() => bot.say('All of our representatives are currently helping other claimants.  The current wait time for call back is approximately 17.78 hours.  Please be patient and the next available representative will call you.'))
+				.then(() => 'speak');  
+			}
+		}
+	},
+	
 	askFirstName: { 
-		prompt: (bot) => bot.say('What\'s your name?'), 
+		prompt: (bot) => bot.say('For the following questions, please provide the information exactly as it appears on your claim.\nWhat is your first name?'), 
 		receive: (bot, message) => { 
-			const name = message.text; 
-			return bot.setProp('name', name) 
-				.then(() => bot.say(`Great! I'll call you ${name}`)) 
+			const firstName = message.text; 
+			return bot.setProp('firstName', firstName) 
+				.then(() => bot.say('Great! I\'ll call you ${firstName}')) 
+				.then(() => 'askLastName'); 
+		} 
+	}, 
+	
+	askLastName: { 
+		prompt: (bot) => bot.say('What is your last name?'), 
+		receive: (bot, message) => { 
+			const lastName = message.text; 
+			return bot.setProp('lastName', lastName) 
+				.then(() => bot.say('Thank you! I understand your full name is ${firstName} ${lastName}')) 
+				.then(() => 'askSocial'); 
+		} 
+	}, 
+	
+	askSocial: { 
+		prompt: (bot) => bot.say('What is your Social Security Number?'), 
+		receive: (bot, message) => { 
+			const social = message.text; 
+			return bot.setProp('social', social) 
+				.then(() => bot.say('Thank you! I understand your SSN is ${social}')) 
 				.then(() => 'speak'); 
 		} 
 	}, 
@@ -55,7 +94,7 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`I didn't understand that.`).then(() => 'speak');
+                    return bot.say('I didn\'t understand that.').then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
