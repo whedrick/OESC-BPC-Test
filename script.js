@@ -43,11 +43,11 @@ module.exports = new Script({
 	}, 
 	
 	askFirstName: { 
-		prompt: (bot) => bot.say('For the following questions, please provide the information exactly as it appears on your claim.\nWhat is your first name?'), 
+		prompt: (bot) => bot.say('For the following questions, please provide the information exactly as it appears on your claim.\n\nWhat is your first name?'), 
 		receive: (bot, message) => { 
 			const firstName = message.text; 
 			return bot.setProp('firstName', firstName) 
-				.then(() => bot.say('Great! I\'ll call you ${firstName}')) 
+				.then(() => bot.say(`Great! I'll call you ${name}`))
 				.then(() => 'askLastName'); 
 		} 
 	}, 
@@ -57,7 +57,7 @@ module.exports = new Script({
 		receive: (bot, message) => { 
 			const lastName = message.text; 
 			return bot.setProp('lastName', lastName) 
-				.then(() => bot.say('Thank you! I understand your full name is ${firstName} ${lastName}')) 
+				.then(() => bot.say(`Thank you! I understand your full name is ${firstName} ${lastName}`))
 				.then(() => 'askSocial'); 
 		} 
 	}, 
@@ -67,7 +67,7 @@ module.exports = new Script({
 		receive: (bot, message) => { 
 			const social = message.text; 
 			return bot.setProp('social', social) 
-				.then(() => bot.say('Thank you! I understand your SSN is ${social}')) 
+				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
 				.then(() => 'speak'); 
 		} 
 	}, 
