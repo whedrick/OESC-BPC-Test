@@ -57,8 +57,7 @@ module.exports = new Script({
 		receive: (bot, message) => { 
 			const lastName = message.text; 
 			return bot.setProp('lastName', lastName) 
-				.then(() => bot.getProp('firstName'))
-				.then(() => bot.say(`Thank you! I understand your full name is ${firstName} ${lastName}`))
+				.then(() => bot.say(`Thank you! I understand your last name is ${lastName}`))
 				.then(() => 'askSocial'); 
 		} 
 	}, 
