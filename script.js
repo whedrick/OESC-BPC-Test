@@ -25,10 +25,19 @@ module.exports = new Script({
 			if (message.text == "I would like to file a new claim") {
 				return bot.say('You can file a new claim by visiting our website, https://unemployment.state.ok.us/')
 					.then(() => 'speak'); 
+			} else if (message.text == "I received a letter about my claim") {
+				return bot.say('OK, let me gather some information so I can determine what the letter was about.')
+					.then(() => 'speak'); 
+			} else if (message.text == "I would like to chat with a live person") {
+				return bot.say('All of our representatives are currently helping other claimants.  Please be patient and one will be with you as quickly as possible.')
+					.then(() => 'speak'); 
+			} else if (message.text == "I would like a phone call from a representative") {
+				return bot.say('All of our representatives are currently helping other claimants.  The current wait time for call back is approximately 17.78 hours.  Please be patient and the next available representative will call you.')
+					.then(() => 'speak'); 
 			} else {
 				return bot.setProp('option', option)
-					.then(() => bot.say(`Great! You chose "${option}"`))
-					.then(() => 'speak'); 
+					.then(() => bot.say(`I'm sorry, "${option}" is not a valid option.`))
+					.then(() => 'initialHelp'); 
 			}
 		}
 	}, 
