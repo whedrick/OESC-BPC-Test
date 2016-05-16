@@ -120,8 +120,11 @@ module.exports = new Script({
                         return bot.say(line);
                     });
                 })
-
-                return p.then(() => 'speak');
+				if (upperText != "INITIALHELP") {
+					return p.then(() => 'speak');
+				} else {
+					return p.then(() => 'initialHelp');
+				}
             }
 
             return updateSilent()
