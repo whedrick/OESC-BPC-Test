@@ -27,7 +27,7 @@ module.exports = new Script({
 					.then(() => 'speak'); 
 			} else if (message.text == "I received a letter about my claim") {
 				return bot.say('OK, let me gather some information so I can determine what the letter was about.')
-					.then(() => 'speak'); 
+					.then(() => 'askFirstName'); 
 			} else if (message.text == "I would like to chat with a live person") {
 				return bot.say('All of our representatives are currently helping other claimants.  Please be patient and one will be with you as quickly as possible.')
 					.then(() => 'speak'); 
@@ -41,7 +41,36 @@ module.exports = new Script({
 			}
 		}
 	}, 
-
+	
+	askFirstName: { 
+		prompt: (bot) => bot.say('For the following questions, please provide the information exactly as it appears on your claim.\nWhat is your first name?'), 
+		receive: (bot, message) => { 
+			const firstName = message.text; 
+			return bot.setProp('firstName', firstName) 
+				.then(() => bot.say('Great! I\'ll call you ${firstName}')) 
+				.then(() => 'askLastName'); 
+		} 
+	}, 
+	
+	askLastName: { 
+		prompt: (bot) => bot.say('What is your last name?'), 
+		receive: (bot, message) => { 
+			const lastName = message.text; 
+			return bot.setProp('lastName', lastName) 
+				.then(() => bot.say('Thank you! I understand your full name is ${firstName} ${lastName}')) 
+				.then(() => 'askSocial'); 
+		} 
+	}, 
+	
+	askSocial: { 
+		prompt: (bot) => bot.say('What is your Social Security Number?'), 
+		receive: (bot, message) => { 
+			const social = message.text; 
+			return bot.setProp('social', social) 
+				.then(() => bot.say('Thank you! I understand your SSN is ${social}')) 
+				.then(() => 'speak'); 
+		} 
+	}, 
 
     speak: {
         receive: (bot, message) => {
