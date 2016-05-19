@@ -74,9 +74,8 @@ module.exports = new Script({
 
 	checkInfo: {
 		prompt: (bot) => bot.getProp('firstName')
-			.then((firstName) => var checkString = `First Name: ${firstName}\n`)
-			.then(() => bot.getProp('lastName'))
-			.then(() => bot.say(checkString),
+			.then((firstName) => var outStringStuff = `First Name:`)
+			.then(() => bot.say(outStringStuff),
 			
 			//.then((lastName, firstName) => bot.say(`First Name: ${firstName}\nLast Name: ${lastName}`)), 
 		receive: (bot, message) => { 
