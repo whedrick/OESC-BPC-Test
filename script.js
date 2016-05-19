@@ -66,10 +66,10 @@ module.exports = new Script({
 		prompt: (bot) => bot.say('What is your Social Security Number?'), 
 		receive: (bot, message) => { 
 			const social = message.text; 
-			// social = social.replaceAll("[^\\d.]", "");
+			var num = message.text.replace(/[^0-9]/gi, "").substring(0,9);
 			return bot.setProp('social', social) 
 				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
-				.then(() => bot.say(message.text.replace(/[^0-9]/gi, "")))
+				.then(() => bot.say(num))
 				.then(() => 'checkInfo'); 
 		} 
 	}, 
