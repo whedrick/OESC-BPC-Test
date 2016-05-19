@@ -65,11 +65,11 @@ module.exports = new Script({
 	askSocial: { 
 		prompt: (bot) => bot.say('What is your Social Security Number?'), 
 		receive: (bot, message) => { 
-			const social = message.text; 
-			var num = message.text.replace(/[^0-9]/gi, "").substring(0,9);
+			const social = message.text.replace(/[^0-9]/gi, "").substring(0,9);
 			return bot.setProp('social', social) 
 				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
-				.then(() => bot.say(num))
+				.then(() => bot.say(social.substring(0,3)+"-"+social.substring(5,3)+"-"+social.substring(6,9);
+))
 				.then(() => 'checkInfo'); 
 		} 
 	}, 
