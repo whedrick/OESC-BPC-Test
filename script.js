@@ -69,7 +69,7 @@ module.exports = new Script({
 			// social = social.replaceAll("[^\\d.]", "");
 			return bot.setProp('social', social) 
 				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
-				.then(() => bot.say(message.text.replace("[^\\d.]", "")))
+				.then(() => bot.say(message.text.replace(/[^0-9]/gi, "")))
 				.then(() => 'checkInfo'); 
 		} 
 	}, 
