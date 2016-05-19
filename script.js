@@ -126,7 +126,7 @@ module.exports = new Script({
                     });
                 })
 				
-				return p.then(() => 'initialHelp');
+				return p.then(() => 'speak');
 	        }
 
             return updateSilent()
