@@ -67,8 +67,7 @@ module.exports = new Script({
 		receive: (bot, message) => { 
 			const social = message.text.replace(/[^0-9]/gi, "").substring(0,9);
 			return bot.setProp('social', social) 
-				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
-				.then(() => bot.say(social.substring(0,3)+"-"+social.substring(5,3)+"-"+social.substring(6,9)))
+				.then(() => bot.say(`Thank you! I understand your SSN is `+social.substring(0,3)+"-"+social.substring(5,3)+"-"+social.substring(6,9)))
 				.then(() => 'checkInfo'); 
 		} 
 	}, 
