@@ -106,10 +106,12 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-					if (upperText != "INITIALHELP") {
-						return bot.say(`I didn't understand that.`).then(() => 'speak');
-					} else {
+					if (upperText == "INITIALHELP") {
 						return bot.say(`Restarting...`).then(() => 'initialHelp');
+					}  else if (upperText == "CHECKINFO") {
+						return bot.say(`Restarting...`).then(() => 'checkInfo');
+					} else {
+						return bot.say(`I didn't understand that.`).then(() => 'speak');
 					}
                 }
 
