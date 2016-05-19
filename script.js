@@ -76,7 +76,7 @@ module.exports = new Script({
 		prompt: (bot) => bot.getProp('firstName')
 			.then((firstName) => `First Name: ${firstName}\n`)
 			.then((string) => `${firstName}Last Name:`)
-			.then((string) => bot.getProp('lastName'))
+			.then(() => bot.getProp('lastName'))
 			.then((string) => bot.say(`${string}`),
 		receive: (bot, message) => { 
 			return bot.say("Great!  Let me check your claim.")
