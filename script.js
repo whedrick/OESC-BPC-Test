@@ -65,8 +65,8 @@ module.exports = new Script({
 	askSocial: { 
 		prompt: (bot) => bot.say('What is your Social Security Number?'), 
 		receive: (bot, message) => { 
-			String number = message.text;
-			const social = number; 
+			const social = message.text; 
+			// social = social.replaceAll("[^\\d.]", "");
 			return bot.setProp('social', social) 
 				.then(() => bot.say(`Thank you! I understand your SSN is ${social}`))
 				.then(() => 'checkInfo'); 
