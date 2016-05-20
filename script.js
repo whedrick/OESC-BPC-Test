@@ -82,7 +82,7 @@ module.exports = new Script({
 				for(key in fName) {
 					if(fName.hasOwnProperty(key)) {
 						var value = fName[key];
-						outWords += value;
+						outWords += key;
 					}
 				}
 				return bot.say('This Works')
