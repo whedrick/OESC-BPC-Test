@@ -75,12 +75,7 @@ module.exports = new Script({
 	checkInfo: {
 		prompt: (bot) => bot.say('Let\'s review the information your provided...')
 			.then(() => {
-				var promptWords = "";
-				var fName = bot.getProp('firstName');
-				var x;
-				for (x in fName){
-					promptWords += fName[x] + " ";
-				}
+				var promptWords = bot.getProp('firstName');
 				return bot.say('This Works')
 				.then(() => bot.say('First Name: ' + promptWords));
 			})
