@@ -79,14 +79,13 @@ module.exports = new Script({
 				var fName = bot.getProp('firstName');
 				var lName = bot.getProp('lastName');
 				var key;
-				for(key in fName) {
-					if(fName.hasOwnProperty(key)) {
-						var value = fName[key];
-						outWords += key;
-					}
+				for (i=0;i<cars.length;i++)
+				{
+					 outWords += fName[i] + " ";
 				}
+				
 				return bot.say('This Works')
-				.then(() => bot.say('First Name: ' + fName[0]));
+				.then(() => bot.say('First Name: ' + outWords));
 			})
 			.then(() => bot.say('Is this correct? %[Yes](postback:yes) %[No](postback:no)')), 
 		receive: (bot, message) => { 
