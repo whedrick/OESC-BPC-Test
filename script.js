@@ -77,6 +77,7 @@ module.exports = new Script({
 			.then(() => {
 				var promptWords = "";
 				var fName = bot.getProp('firstName');
+				var x;
 				for (x in fName){
 					promptWords += fName[x] + " ";
 				}
