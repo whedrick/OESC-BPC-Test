@@ -79,7 +79,7 @@ module.exports = new Script({
 				var fName = bot.getProp('firstName');
 				var lName = bot.getProp('lastName');
 				var key;
-				for (i=0;i<cars.length;i++)
+				for (i=0;i<fName.length;i++)
 				{
 					 outWords += fName[i] + " ";
 				}
