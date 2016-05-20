@@ -74,7 +74,7 @@ module.exports = new Script({
 
 	checkInfo: {
 		prompt: (bot) => {
-			const promptWords = "Words Here";
+			return bot.say("Bot Words");
 		}
 		//prompt: (bot) => bot.getProp('firstName')
 		//	.then((firstName) => `First Name: ${firstName}\n`)
