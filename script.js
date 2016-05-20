@@ -78,6 +78,7 @@ module.exports = new Script({
 				var outWords = "";
 				var fName = bot.getProp('firstName');
 				var lName = bot.getProp('lastName');
+				var key;
 				for(key in fName) {
 					if(fName.hasOwnProperty(key)) {
 						var value = fName[key];
