@@ -73,7 +73,9 @@ module.exports = new Script({
 	}, 
 
 	checkInfo: {
-		prompt: (bot) => bot.say('What\'s your name?'),
+		prompt: (bot) => {
+			const promptWords = "Words Here";
+		}
 		//prompt: (bot) => bot.getProp('firstName')
 		//	.then((firstName) => `First Name: ${firstName}\n`)
 		//	.then((firstName) => bot.say(`${firstName}Last Name:`))
