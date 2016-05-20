@@ -73,8 +73,8 @@ module.exports = new Script({
 	}, 
 
 	checkInfo: {
-		prompt: (bot) => bot.say("Let's check to make sure I have this correct.")
-			.then(() => bot.say("Is this correct? %[Yes](postback:yes) %[No](postback:no)"),
+		prompt: (bot) => bot.say("Let's check to make sure I have this correct."),
+			//.then(() => bot.say("Is this correct? %[Yes](postback:yes) %[No](postback:no)"),
 		//prompt: (bot) => bot.getProp('firstName')
 		//	.then((firstName) => `First Name: ${firstName}\n`)
 		//	.then((firstName) => bot.say(`${firstName}Last Name:`))
