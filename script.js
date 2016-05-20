@@ -85,7 +85,7 @@ module.exports = new Script({
 				}
 				
 				return bot.say('This Works')
-				.then(() => bot.say('First Name: ' + outWords));
+				.then(() => bot.say('First Name: ' + fName.toSource()));
 			})
 			.then(() => bot.say('Is this correct? %[Yes](postback:yes) %[No](postback:no)')), 
 		receive: (bot, message) => { 
