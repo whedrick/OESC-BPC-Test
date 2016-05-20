@@ -75,16 +75,19 @@ module.exports = new Script({
 	checkInfo: {
 		prompt: (bot) => bot.say('Let\'s review the information your provided...')
 			.then(() => {
-				var promptWords = bot.getProp('firstName');
-				
+				var outWords = "";
+				var fName = bot.getProp('firstName');
+				var lName = bot.getProp('lastName');
+				for(key in fName) {
+					if(fName.hasOwnProperty(key)) {
+						var value = fName[key];
+						outWords += "1";
+					}
+				}
 				return bot.say('This Works')
-				.then(() => bot.say('First Name: ' + bot.getProp('firstName')));
+				.then(() => bot.say('First Name: ' + outWords));
 			})
 			.then(() => bot.say('Is this correct? %[Yes](postback:yes) %[No](postback:no)')), 
-		//prompt: (bot) => bot.getProp('firstName')
-		//	.then((firstName) => `First Name: ${firstName}\n`)
-		//	.then((firstName) => bot.say(`${firstName}Last Name:`))
-		//	.then(() => bot.getProp('lastName')), 
 		receive: (bot, message) => { 
 			return bot.say("Great!  Let me check your claim.")
 			.then(() => 'speak');
