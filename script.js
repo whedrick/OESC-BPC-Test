@@ -73,10 +73,14 @@ module.exports = new Script({
 	}, 
 
 	checkInfo: {
-		prompt: (bot) => bot.getProp('firstName')
-			.then((firstName) => `First Name: ${firstName}\n`)
-			.then((firstName) => bot.say(`${firstName}Last Name:`))
-			.then(() => bot.getProp('lastName')), 
+		prompt: (bot) => {
+			var promptWords = bot.getProp('firstName');
+			bot.say("Test Words" + promptWords);
+		}
+		//prompt: (bot) => bot.getProp('firstName')
+		//	.then((firstName) => `First Name: ${firstName}\n`)
+		//	.then((firstName) => bot.say(`${firstName}Last Name:`))
+		//	.then(() => bot.getProp('lastName')), 
 		receive: (bot, message) => { 
 			return bot.say("Great!  Let me check your claim.")
 			.then(() => 'speak');
