@@ -76,7 +76,8 @@ module.exports = new Script({
 		prompt: (bot) => bot.say('Let\'s review the information your provided...')
 			.then(() => {
 				var promptWords = bot.getProp('firstName');
-				return bot.say('This Works');
+				return bot.say('This Works')
+				.then(() => bot.say('First Name: ' + promptWords));
 			})
 			.then(() => bot.say('Is this correct? %[Yes](postback:yes) %[No](postback:no)')), 
 		//prompt: (bot) => bot.getProp('firstName')
