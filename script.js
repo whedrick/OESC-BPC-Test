@@ -73,7 +73,7 @@ module.exports = new Script({
 	}, 
 
 	checkInfo: {
-		prompt: (bot) => then(() => bot.say('I can help you with several things.  Please choose one of the following:	%[I would like to file a new claim](postback:file_new_claim) %[I received a letter about my claim](postback:received_letter) %[I would like to chat with a live person](postback:live_person) %[I would like a phone call from a representative](postback:phone_call)'), 
+		prompt: (bot) => bot.say('I can help you with several things.  Please choose one of the following:	%[I would like to file a new claim](postback:file_new_claim) %[I received a letter about my claim](postback:received_letter) %[I would like to chat with a live person](postback:live_person) %[I would like a phone call from a representative](postback:phone_call)'), 
 		//prompt: (bot) => bot.getProp('firstName')
 		//	.then((firstName) => `First Name: ${firstName}\n`)
 		//	.then((firstName) => bot.say(`${firstName}Last Name:`))
